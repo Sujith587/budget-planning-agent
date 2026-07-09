@@ -4,7 +4,7 @@ import com.budgetledger.backend.dto.BudgetAnalysisRequest;
 import com.budgetledger.backend.model.AIRecommendation;
 import com.budgetledger.backend.model.BudgetEntry;
 import com.budgetledger.backend.repository.BudgetRepository;
-import com.budgetledger.backend.service.GeminiService;
+import com.budgetledger.backend.service.GroqService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +16,16 @@ import java.util.List;
 public class BudgetController {
 
     private final BudgetRepository budgetRepository;
-    private final GeminiService geminiService;
+    private final GroqService groqService;
 
-    public BudgetController(BudgetRepository budgetRepository, GeminiService geminiService) {
+    public BudgetController(BudgetRepository budgetRepository, GroqService groqService) {
         this.budgetRepository = budgetRepository;
-        this.geminiService = geminiService;
+        this.groqService = groqService;
     }
 
     @PostMapping("/analyze")
     public ResponseEntity<AIRecommendation> analyzeBudget(@RequestBody BudgetAnalysisRequest request) {
-        AIRecommendation recommendation = geminiService.analyzeBudget(request);
+        AIRecommendation recommendation = groqService.analyzeBudget(request);
         return ResponseEntity.ok(recommendation);
     }
 
