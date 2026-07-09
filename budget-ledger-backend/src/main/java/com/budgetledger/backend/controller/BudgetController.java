@@ -3,6 +3,7 @@ package com.budgetledger.backend.controller;
 import com.budgetledger.backend.dto.BudgetAnalysisRequest;
 import com.budgetledger.backend.model.AIRecommendation;
 import com.budgetledger.backend.model.BudgetEntry;
+import com.budgetledger.backend.model.Expense;
 import com.budgetledger.backend.repository.BudgetRepository;
 import com.budgetledger.backend.service.GroqService;
 import org.springframework.http.ResponseEntity;
